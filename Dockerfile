@@ -8,3 +8,8 @@ WORKDIR /src
 RUN python setup.py sdist
 RUN /v/bin/pip install dist/omero-py*gz
 RUN /v/bin/python -c "import omero_version; print omero_version.omero_version"
+
+RUN useradd -m test
+USER test
+ENTRYPOINT ["/v/bin/omero"]
+CMD []

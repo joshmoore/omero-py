@@ -10,6 +10,7 @@ services:
 
 script:
   - docker build -t omero-py .
+  - docker run -it omero-py version
 
 deploy:
   provider: pypi
