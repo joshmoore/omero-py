@@ -1437,7 +1437,7 @@ class CLI(cmd.Cmd, Context):
 
     def _cwd(self, cwd):
         if cwd is None:
-            cwd = str(self.dir)
+            cwd = get_omerodir(throws=True)
         else:
             cwd = str(cwd)
         return cwd
@@ -1493,7 +1493,7 @@ class CLI(cmd.Cmd, Context):
             pass
 
     def readDefaults(self):
-        lines = self.get_config_property_lines(path(self._cwd(None)))
+        lines = self.get_config_property_lines(path(get_omerodir()))
         defaults = ""
         for line in lines:
             if isbytes(line):
@@ -1532,7 +1532,7 @@ class CLI(cmd.Cmd, Context):
 
         from omero.plugins.prefs import getprefs
         try:
-            output = getprefs(["get"], str(old_div(path(self._cwd(None)), "lib")))
+            output = getprefs(["get"], get_omerouserdir(), "lib")
         except OSError as err:
             self.err("Error getting preferences")
             self.dbg(err)
