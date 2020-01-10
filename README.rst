@@ -35,7 +35,7 @@ To install ``omero-py`` using venv::
 
     python3.6 -m venv myenv
     . myenv/bin/activate
-    pip install 'omero-py>=5.6.dev9'
+    pip install omero-py
 
 You may need to replace ``python3.6`` with ``python`` or ``python3`` depending on your Python distribution.
 
